@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import MusicSearch from './MusicSearch';
+import musicRootReducer from './reducers/musicRootReducer';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-serviceWorker.unregister();
+const store = createStore(musicRootReducer)
+
+ReactDOM.render(
+  <Provider store={store}>
+    <MusicSearch />
+  </Provider>,
+  document.getElementById('root')
+);
